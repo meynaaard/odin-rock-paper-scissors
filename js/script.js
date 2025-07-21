@@ -85,14 +85,6 @@ function playGame() {
     }
   }
 
-  roundCount = 1;
-  while (roundCount <= 5) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-    roundCount++;
-  }
-
   let result;
   if (humanScore > computerScore) {
     result = "You Win!";
