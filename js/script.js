@@ -79,29 +79,30 @@ function playGame() {
   });
 
   function playRound(humanChoice, computerChoice) {
-    if (humanChoice == "rock" && computerChoice == "scissors") {
-      alert("You win! Rock beats Scissors");
-      humanScore++;
-    } else if (humanChoice == "scissors" && computerChoice == "rock") {
-      alert("You lose! Rock beats Scissors");
-      computerScore++;
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-      alert("You win! Paper beats Rock");
-      humanScore++;
-    } else if (humanChoice == "rock" && computerChoice == "paper") {
-      alert("You lose! Paper beats Rock");
-      computerScore++;
-    } else if (humanChoice == "scissors" && computerChoice == "paper") {
-      alert("You win! Scissors beat Paper");
-      humanScore++;
-    } else if (humanChoice == "paper" && computerChoice == "scissors") {
-      alert("You lose! Scissors beat Paper");
-      computerScore++;
-    } else if (humanChoice == computerChoice) {
+    const rules = {
+      rock: "scissors",
+      paper: "rock",
+      scissors: "paper"
+    };
+
+    if (humanChoice === computerChoice) {
       alert("Draw!");
+      return;
+    }
+
+    if (rules[humanChoice] === computerChoice) {
+      alert(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`);
+      humanScore++;
+    } else {
+      alert(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`);
+      computerScore++;
+    }
+
+    function capitalize(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
     }
   }
-
+  
   let result;
   if (humanScore > computerScore) {
     result = "You Win!";
