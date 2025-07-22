@@ -80,6 +80,12 @@ function playGame() {
 
     console.log(`Human score: ${humanScore}`);
     console.log(`Computer score: ${computerScore}`);
+
+    if (humanScore === 5 || computerScore === 5) {
+      buttons.forEach((button) => {
+        button.removeEventListener("click", handleButtonClick);
+      });
+    }
   }
 
   buttons.forEach((button) => {
