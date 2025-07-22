@@ -14,10 +14,14 @@ function getComputerChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+let result = "";
+
+const scoresDiv = document.querySelector(".scores");
+const buttons = document.querySelectorAll(".buttons button");
+const roundResultDiv = document.querySelector(".round-result");
+const gameResultDiv = document.querySelector(".game-result");
 
 function playGame() {
-  const buttons = document.querySelectorAll(".buttons button");
-
   function handleButtonClick(event) {
     let humanSelection = "";
     const computerSelection = getComputerChoice();
@@ -34,19 +38,23 @@ function playGame() {
         break;
     }
 
-    console.log(`Human choice: ${humanSelection}`);
-    console.log(`Computer choice: ${computerSelection}`);
-
     playRound(humanSelection, computerSelection);
 
-    console.log(`Human score: ${humanScore}`);
-    console.log(`Computer score: ${computerScore}`);
-
     if (humanScore === 5 || computerScore === 5) {
+      if (humanScore > computerScore) {
+        gameResultDiv.textContent = "You win!";
+      } else if (humanScore == computerScore) {
+        gameResultDiv.textContent = "Draw!";
+      } else {
+        gameResultDiv.textContent = "You lose!";
+      }
+
       buttons.forEach((button) => {
         button.removeEventListener("click", handleButtonClick);
       });
     }
+
+    scoresDiv.textContent = `Human: ${humanScore} | Computer: ${computerScore}`;
   }
 
   buttons.forEach((button) => {
@@ -61,15 +69,14 @@ function playGame() {
     };
 
     if (humanChoice === computerChoice) {
-      alert("Draw!");
-      return;
-    }
-
-    if (rules[humanChoice] === computerChoice) {
-      alert(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`);
+      roundResultDiv.textContent = "Draw!";
+    } else if (rules[humanChoice] === computerChoice) {
+      roundResultDiv.textContent = `You win! ${capitalize(humanChoice)} 
+                                beats ${capitalize(computerChoice)}`;
       humanScore++;
     } else {
-      alert(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`);
+      roundResultDiv.textContent = `You lose! ${capitalize(computerChoice)} 
+                                beats ${capitalize(humanChoice)}`;
       computerScore++;
     }
 
@@ -77,17 +84,6 @@ function playGame() {
       return word.charAt(0).toUpperCase() + word.slice(1);
     }
   }
-  
-  let result;
-  if (humanScore > computerScore) {
-    result = "You Win!";
-  } else if (humanScore == computerScore) {
-    result = "Draw!";
-  } else {
-    result = "You Lose!";
-  }
-
-  // alert(`Human: ${humanScore}\nComputer: ${computerScore}\n\n${result}`);
 }
 
 playGame();
