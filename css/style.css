@@ -7,3 +7,28 @@
   margin: 0;
   padding: 0;
 }
+
+/* Type Selectors */
+body {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 1.2;
+  min-height: 100vh;
+}
+
+.scores {
+  display: flex;
+  gap: 50px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.results {
+  text-align: center;
+}
