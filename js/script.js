@@ -51,16 +51,33 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt("rock, paper, scissors:", "");
-  humanChoice = humanChoice.toLowerCase();
-  return humanChoice;
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
 function playGame() {
+  const buttons = document.querySelector(".buttons");
+
+  buttons.addEventListener("click", (event) => {
+    let humanSelection = "";
+    const computerSelection = getComputerChoice();
+
+    switch (event.target.className) {
+      case "rock":
+        humanSelection = "rock";
+        break;
+      case "paper":
+        humanSelection = "paper";
+        break;
+      case "scissors":
+        humanSelection = "scissors";
+        break;
+    }
+
+    console.log(humanSelection);
+    console.log(computerSelection);
+    playRound(humanSelection, computerSelection);
+  });
+
   function playRound(humanChoice, computerChoice) {
     if (humanChoice == "rock" && computerChoice == "scissors") {
       alert("You win! Rock beats Scissors");
@@ -94,7 +111,7 @@ function playGame() {
     result = "You Lose!";
   }
 
-  alert(`Human: ${humanScore}\nComputer: ${computerScore}\n\n${result}`);
+  // alert(`Human: ${humanScore}\nComputer: ${computerScore}\n\n${result}`);
 }
 
 playGame();
