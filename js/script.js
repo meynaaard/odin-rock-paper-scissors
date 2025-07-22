@@ -29,7 +29,7 @@ function playGame() {
     let humanSelection = "";
     const computerSelection = getComputerChoice();
 
-    switch (event.target.className) {
+    switch (event.target.id) {
       case "rock":
         humanSelection = "rock";
         break;
