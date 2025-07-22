@@ -16,10 +16,13 @@ let humanScore = 0;
 let computerScore = 0;
 let result = "";
 
-const scoresDiv = document.querySelector(".scores");
+const humanScoreEl = document.querySelector(".human-score");
+const computerScoreEl = document.querySelector(".computer-score");
+
 const buttons = document.querySelectorAll(".buttons button");
-const roundResultDiv = document.querySelector(".round-result");
-const gameResultDiv = document.querySelector(".game-result");
+
+const roundResult = document.querySelector(".round-result");
+const gameResult = document.querySelector(".game-result");
 
 function playGame() {
   function handleButtonClick(event) {
@@ -42,11 +45,11 @@ function playGame() {
 
     if (humanScore === 5 || computerScore === 5) {
       if (humanScore > computerScore) {
-        gameResultDiv.textContent = "You win!";
+        gameResult.textContent = "You win!";
       } else if (humanScore == computerScore) {
-        gameResultDiv.textContent = "Draw!";
+        gameResult.textContent = "Draw!";
       } else {
-        gameResultDiv.textContent = "You lose!";
+        gameResult.textContent = "You lose!";
       }
 
       buttons.forEach((button) => {
@@ -54,7 +57,8 @@ function playGame() {
       });
     }
 
-    scoresDiv.textContent = `Human: ${humanScore} | Computer: ${computerScore}`;
+    humanScoreEl.textContent = `Human: ${humanScore}`; 
+    computerScoreEl.textContent = `Computer: ${computerScore}`;
   }
 
   buttons.forEach((button) => {
@@ -69,13 +73,13 @@ function playGame() {
     };
 
     if (humanChoice === computerChoice) {
-      roundResultDiv.textContent = "Draw!";
+      roundResult.textContent = "Draw!";
     } else if (rules[humanChoice] === computerChoice) {
-      roundResultDiv.textContent = `You win! ${capitalize(humanChoice)} 
+      roundResult.textContent = `You win! ${capitalize(humanChoice)} 
                                 beats ${capitalize(computerChoice)}`;
       humanScore++;
     } else {
-      roundResultDiv.textContent = `You lose! ${capitalize(computerChoice)} 
+      roundResult.textContent = `You lose! ${capitalize(computerChoice)} 
                                 beats ${capitalize(humanChoice)}`;
       computerScore++;
     }
