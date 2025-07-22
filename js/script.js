@@ -55,9 +55,9 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playGame() {
-  const buttons = document.querySelector(".buttons");
+  const buttons = document.querySelectorAll(".buttons button");
 
-  buttons.addEventListener("click", (event) => {
+  function handleButtonClick(event) {
     let humanSelection = "";
     const computerSelection = getComputerChoice();
 
@@ -73,9 +73,17 @@ function playGame() {
         break;
     }
 
-    console.log(humanSelection);
-    console.log(computerSelection);
+    console.log(`Human choice: ${humanSelection}`);
+    console.log(`Computer choice: ${computerSelection}`);
+
     playRound(humanSelection, computerSelection);
+
+    console.log(`Human score: ${humanScore}`);
+    console.log(`Computer score: ${computerScore}`);
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", handleButtonClick);
   });
 
   function playRound(humanChoice, computerChoice) {
