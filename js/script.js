@@ -21,6 +21,9 @@ const computerScoreEl = document.querySelector(".computer-score");
 
 const buttons = document.querySelectorAll(".buttons button");
 
+const humanChoice = document.getElementById("human-choice"); 
+const computerChoice = document.getElementById("computer-choice");
+
 const roundResult = document.querySelector(".round-result");
 const gameResult = document.querySelector(".game-result");
 
@@ -65,28 +68,31 @@ function playGame() {
     button.addEventListener("click", handleButtonClick);
   });
 
-  function playRound(humanChoice, computerChoice) {
+  function playRound(humanSelection, computerSelection) {
     const rules = {
       rock: "scissors",
       paper: "rock",
       scissors: "paper"
     };
 
-    if (humanChoice === computerChoice) {
+    if (humanSelection === computerSelection) {
       roundResult.textContent = "Draw!";
-    } else if (rules[humanChoice] === computerChoice) {
-      roundResult.textContent = `You win! ${capitalize(humanChoice)} 
-                                beats ${capitalize(computerChoice)}`;
+    } else if (rules[humanSelection] === computerSelection) {
+      roundResult.textContent = `You win! ${capitalize(humanSelection)} 
+                                beats ${capitalize(computerSelection)}`;
       humanScore++;
     } else {
-      roundResult.textContent = `You lose! ${capitalize(computerChoice)} 
-                                beats ${capitalize(humanChoice)}`;
+      roundResult.textContent = `You lose! ${capitalize(computerSelection)} 
+                                beats ${capitalize(humanSelection)}`;
       computerScore++;
     }
 
     function capitalize(word) {
       return word.charAt(0).toUpperCase() + word.slice(1);
     }
+
+    humanChoice.textContent = capitalize(humanSelection);
+    computerChoice.textContent = capitalize(computerSelection);
   }
 }
 
