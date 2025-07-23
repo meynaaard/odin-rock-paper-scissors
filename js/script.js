@@ -25,7 +25,11 @@ const humanChoice = document.getElementById("human-choice");
 const computerChoice = document.getElementById("computer-choice");
 
 const roundResult = document.getElementById("round-result");
-const gameResult = document.querySelector(".game-result");
+
+const gameResultModal = new bootstrap.Modal(
+  document.getElementById('gameResultModal')
+);
+const gameResult = document.getElementById("game-result");
 
 function playGame() {
   function handleButtonClick(event) {
@@ -54,6 +58,8 @@ function playGame() {
       } else {
         gameResult.textContent = "You lose!";
       }
+
+      gameResultModal.show();
 
       buttons.forEach((button) => {
         button.removeEventListener("click", handleButtonClick);

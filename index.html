@@ -8,10 +8,29 @@
   <link rel="stylesheet" href="./css/vendor/bootstrap.min.css">
 </head>
 <body>
+  
+  <!-- Game Result Modal -->
+  <div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="gameResultModalLabel">Game Result</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <h1 id="game-result" class="display-1"></h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="location.reload()">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <header class="header">
     <h1 class="display-1">Rock, Paper, Scissors</h1>
   </header>
-  
+
   <section class="scores">
     <div class="card text-center">
       <div class="card-header">Human</div>
@@ -49,10 +68,10 @@
   </section>
 
   <section class="results">
-    <h3 class="game-result"></h3>
+    
   </section>
 
-  <script src="./js/script.js"></script>
   <script src="./js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 </html>
