@@ -15,10 +15,10 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  line-height: 1.2;
   min-height: 100vh;
 }
 
+/* Class Selectors */
 .scores {
   display: flex;
   gap: 50px;
