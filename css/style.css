@@ -33,7 +33,7 @@ body {
   gap: 20px;
 }
 
-.btn {
+.buttons .btn {
   font-size: 2rem !important;
 }
 
