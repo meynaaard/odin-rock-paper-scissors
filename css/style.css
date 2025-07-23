@@ -24,6 +24,10 @@ body {
   gap: 50px;
 }
 
+.scores .card {
+  width: 18rem;
+}
+
 .buttons {
   display: flex;
   gap: 20px;

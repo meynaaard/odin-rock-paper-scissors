@@ -57,8 +57,8 @@ function playGame() {
       });
     }
 
-    humanScoreEl.textContent = `Human: ${humanScore}`; 
-    computerScoreEl.textContent = `Computer: ${computerScore}`;
+    humanScoreEl.textContent = humanScore; 
+    computerScoreEl.textContent = computerScore;
   }
 
   buttons.forEach((button) => {
