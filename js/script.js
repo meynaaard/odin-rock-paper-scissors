@@ -24,7 +24,7 @@ const buttons = document.querySelectorAll(".buttons button");
 const humanChoice = document.getElementById("human-choice"); 
 const computerChoice = document.getElementById("computer-choice");
 
-const roundResult = document.querySelector(".round-result");
+const roundResult = document.getElementById("round-result");
 const gameResult = document.querySelector(".game-result");
 
 function playGame() {
@@ -75,15 +75,19 @@ function playGame() {
       scissors: "paper"
     };
 
+    roundResult.classList.remove("alert-info", "alert-success", "alert-danger");
     if (humanSelection === computerSelection) {
       roundResult.textContent = "Draw!";
+      roundResult.classList.add("alert-info");
     } else if (rules[humanSelection] === computerSelection) {
       roundResult.textContent = `You win! ${capitalize(humanSelection)} 
                                 beats ${capitalize(computerSelection)}`;
+      roundResult.classList.add("alert-success");
       humanScore++;
     } else {
       roundResult.textContent = `You lose! ${capitalize(computerSelection)} 
                                 beats ${capitalize(humanSelection)}`;
+      roundResult.classList.add("alert-danger")
       computerScore++;
     }
 
